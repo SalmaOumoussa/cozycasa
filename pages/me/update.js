@@ -1,27 +1,30 @@
-import Login from "../components/auth/Login";
-import Header from "../components/Header";
+import React from "react";
 import { getSession } from "next-auth/react";
+import Profile from "../../components/user/Profile";
+import Header from "../../components/Header";
 
-export default function loginPage() {
+const UpdateProfilePage = () => {
   return (
     <>
       <Header />
-      <Login />
+      <Profile />
     </>
   );
-}
+};
 
 export async function getServerSideProps(context) {
   const session = await getSession({ req: context.req });
-  if (session) {
+  if (!session) {
     return {
       redirect: {
-        destination: "/",
+        destination: "/login",
         permanant: false,
       },
     };
   }
   return {
-    props: {},
+    props: { session },
   };
 }
+
+export default UpdateProfilePage;

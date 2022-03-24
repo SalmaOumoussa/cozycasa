@@ -3,7 +3,6 @@ import ErrorHandler from "../utils/errorHandler";
 import AsyncCatchErrors from "../middlewares/catchAsyncErrors";
 import APIFeatures from "../utils/apiFeatures";
 // import cloudinary from 'cloudinary'
-
 const cloudinary = require("cloudinary").v2;
 
 // Setting cloudinary config
@@ -46,4 +45,37 @@ const currentUserProfile = AsyncCatchErrors(async (req, res) => {
   });
 });
 
-export { registerUser, currentUserProfile };
+// Update user profile  => /api/me/update
+const updateProfile = AsyncCatchErrors(async (req, res) => {
+  const user = await User.findById(req.user._id);
+  if (user) {
+    user.name = req.body.name;
+    user.email = req.body.email;
+    if (req.body.password) user.password = req.body.password;
+  }
+  // Update avaatar
+  if (req.body.avatar !== "") {
+    const image_id = user.avatar.public_id;
+    // Delete user previous image/avatar
+    await cloudinary.uploader.destroy(image_id);
+    const result = await cloudinary.uploader.upload(req.body.avatar, {
+      folder: "cc/avatars",
+      width: "150",
+      crop: "scale",
+    });
+
+    user.avatar = {
+      public_id: result.public_id,
+      url: result.secure_url,
+    };
+  }
+
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
+
+export { registerUser, currentUserProfile, updateProfile };

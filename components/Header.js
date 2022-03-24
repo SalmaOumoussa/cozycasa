@@ -1,6 +1,9 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { loadUser } from "../redux/actions/userActions";
 import {
   SearchIcon,
   GlobeAltIcon,
@@ -10,20 +13,22 @@ import {
   ArrowDownIcon,
 } from "@heroicons/react/solid";
 
-import { useState } from "react";
 import { useRouter } from "next/router";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
-import { DateRangePicker } from "react-date-range";
 
 function Header({ placeholder }) {
-  const [searchInput, setSearchInput] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [noOfGuests, setNoOfGuests] = useState(1);
-  // const [location, setLocation] = useState("");
+  const handleLogout = () => {
+    signOut();
+  };
+  const dispatch = useDispatch();
+  const { user, loading } = useSelector((state) => state.auth);
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
   const router = useRouter();
   const { location } = router.query;
+
   // Showing Or not/ toggling the dropdown
   const [showOptions, setShowOptions] = useState();
   const handleClick = () => {
@@ -32,7 +37,7 @@ function Header({ placeholder }) {
 
   const renderDropdown = () => {
     if (showOptions) {
-      if (user !== null) {
+      if (user) {
         return (
           <div class=" inline-block ">
             <div
@@ -45,17 +50,27 @@ function Header({ placeholder }) {
               <div class="py-1" role="none">
                 <Link href="/profile">
                   <a
-                    className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
+                    className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200 font-semibold"
                     role="menuitem"
                     tabindex="-1"
                     id="menu-item-0"
                   >
-                    Profile {user && user.name}
+                    {user && user.name}
+                  </a>
+                </Link>
+                <Link href="/bookings">
+                  <a
+                    className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200 font-semibold"
+                    role="menuitem"
+                    tabindex="-1"
+                    id="menu-item-0"
+                  >
+                    My bookings
                   </a>
                 </Link>
                 <a
-                  onClick={logout}
-                  className="text-purple-800 block px-4 py-2 text-sm hover:bg-gray-200"
+                  onClick={handleLogout}
+                  className="text-purple-800 block px-4 py-2 text-sm hover:bg-gray-200 font-semibold cursor-pointer"
                   role="menuitem"
                   tabindex="-1"
                   id="menu-item-1"
@@ -67,7 +82,7 @@ function Header({ placeholder }) {
           </div>
         );
       }
-      if (user === null) {
+      if (!user) {
         return (
           <div class=" inline-block ">
             <div
@@ -90,7 +105,6 @@ function Header({ placeholder }) {
                 </Link>
                 <Link href="/login">
                   <a
-                    href="#"
                     class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                     role="menuitem"
                     tabindex="-1"
@@ -124,11 +138,6 @@ function Header({ placeholder }) {
       {/* mid */}
       {location ? (
         <div className="flex items-center py-2 font-semibold text-lg">
-          {/* <Link href="/search">
-              <a style={{ color: "purple", textDecorationLine: "underline" }}>
-                Serach?
-              </a>
-            </Link> */}
           <button className="text-white bg-purple-500 px-5 py-2 shadow-md rounded-full font-bold my-3 hover:shadow-xl active:scale-90 transition duration-150">
             {/* <SearchIcon className="h-2 cursor-pointer" /> */}
             <Link href="/search">
@@ -184,10 +193,25 @@ function Header({ placeholder }) {
         <p className="hidden md:inline cursor-pointer">Become a Host</p>
         <GlobeAltIcon className="h-6 cursor-pointer" />
         <div className="flex items-center space-x-2 border-2 p-2 rounded-full cursor-pointer">
-          <MenuIcon className="h-6" />
-          <UserCircleIcon className="h-6" />
+          <MenuIcon onClick={handleClick} className="h-6" />
         </div>
+        {user ? (
+          <Link href="/me/update">
+            <figure>
+              <Image
+                src={user.avatar && user.avatar.url}
+                alt={user && user.name}
+                width="50px"
+                height="50px"
+                className="rounded-full cursor-pointer"
+              />
+            </figure>
+          </Link>
+        ) : (
+          <UserCircleIcon className="h-6" />
+        )}
       </div>
+      {renderDropdown()}
     </header>
   );
 }

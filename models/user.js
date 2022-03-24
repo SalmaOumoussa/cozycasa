@@ -3,10 +3,20 @@ import validator from "validator";
 import bcrypt from "bcryptjs";
 
 const userSchema = new mongoose.Schema({
-  name: {
+  firstName: {
     type: String,
-    required: [true, "Please enter your name"],
-    maxLength: [50, "Your name cannot be longer than 50 characters"],
+    required: [true, "Please enter your first name"],
+    maxLength: [50, "Your first name cannot be longer than 50 characters"],
+  },
+  lastName: {
+    type: String,
+    required: [true, "Please enter your last name"],
+    maxLength: [50, "Your last name cannot be longer than 50 characters"],
+  },
+  username: {
+    type: String,
+    required: [true, "Please enter your username"],
+    maxLength: [50, "Your username cannot be longer than 50 characters"],
   },
   email: {
     type: String,
@@ -19,6 +29,21 @@ const userSchema = new mongoose.Schema({
     required: [true, "Please enter your password"],
     minLength: [6, "Please enter at least 6 characters"],
     select: false,
+  },
+  address: {
+    type: String,
+    required: [true, "Please enter your address"],
+    maxLength: [50, "Your address cannot be longer than 100 characters"],
+  },
+  contactNum: {
+    type: Number,
+    required: [true, "Please enter your No Contact"],
+    maxLength: [15, "Your contact number cannot be longer than 15 characters"],
+  },
+  description: {
+    type: String,
+    required: [true, "Please enter your description"],
+    maxLength: [100, "Your description cannot be longer than 100 characters"],
   },
   avatar: {
     public_id: {
