@@ -90,132 +90,134 @@ const Register = () => {
         rel="stylesheet"
         href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
       />
-      <section class="py-1 bg-blueGray-50">
-        <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
-          <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
-            <div class="rounded-t bg-white mb-0 px-6 py-6">
-              <div class="text-center flex justify-between">
-                <h6 class="text-blueGray-700 text-xl font-bold">My account</h6>
+      <section className="py-1 bg-blueGray-50">
+        <div className="w-full lg:w-8/12 px-4 mx-auto mt-6">
+          <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+            <div className="rounded-t bg-white mb-0 px-6 py-6">
+              <div className="text-center flex justify-between">
+                <h6 className="text-blueGray-700 text-xl font-bold">
+                  My account
+                </h6>
               </div>
             </div>
-            <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+            <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
               <form onSubmit={submitHandler}>
-                <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
                   User Information
                 </h6>
-                <div class="flex flex-wrap">
-                  <div class="w-full lg:w-6/12 px-4">
-                    <div class="relative w-full mb-3">
+                <div className="flex flex-wrap">
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
                       <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
                         First Name
                       </label>{" "}
                       <input
                         type="text"
-                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                       />
                     </div>
                   </div>
-                  <div class="w-full lg:w-6/12 px-4">
-                    <div class="relative w-full mb-3">
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
                       <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
                         Last Name
                       </label>{" "}
                       <input
                         type="text"
-                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                       />
                     </div>
                   </div>
-                  <div class="w-full lg:w-6/12 px-4">
-                    <div class="relative w-full mb-3">
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
                       <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
                         Username
                       </label>{" "}
                       <input
                         type="text"
-                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                       />
                     </div>
                   </div>
-                  <div class="w-full lg:w-6/12 px-4">
-                    <div class="relative w-full mb-3">
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
                       <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
                         Email
                       </label>{" "}
                       <input
                         type="email"
-                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
                   </div>
                 </div>
-                <div class="flex flex-wrap">
-                  <div class="w-full lg:w-6/12 px-4">
-                    <div class="relative w-full mb-3">
+                <div className="flex flex-wrap">
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
                       <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
                         Password
                       </label>{" "}
                       <input
                         type="password"
-                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         placeholder="●●●●●●●●●●"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                       />
                     </div>
                   </div>
-                  <div class="w-full lg:w-6/12 px-4">
-                    <div class="relative w-full mb-3">
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
                       <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
                         Contact Number
                       </label>{" "}
                       <input
                         type="text"
-                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         value={contactNum}
                         onChange={(e) => setContactNum(e.target.value)}
                       />
                     </div>
                   </div>
                 </div>
-                <div class="flex flex-wrap">
-                  <div class="w-full lg:w-12/12 px-4">
-                    <div class="relative w-full mb-3">
+                <div className="flex flex-wrap">
+                  <div className="w-full lg:w-12/12 px-4">
+                    <div className="relative w-full mb-3">
                       <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
                         Address
                       </label>{" "}
                       <input
                         type="text"
-                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
                       />
@@ -223,18 +225,18 @@ const Register = () => {
                   </div>
                 </div>
 
-                <div class="flex flex-wrap">
-                  <div class="w-full lg:w-12/12 px-4">
-                    <div class="relative w-full mb-3">
+                <div className="flex flex-wrap">
+                  <div className="w-full lg:w-12/12 px-4">
+                    <div className="relative w-full mb-3">
                       <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
                         About me
                       </label>
                       <textarea
                         type="text"
-                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         rows="4"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
@@ -243,7 +245,7 @@ const Register = () => {
                   </div>
                 </div>
 
-                <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
                   choose your AVATAR
                 </h6>
                 <div className="d-flex align-items-center">
