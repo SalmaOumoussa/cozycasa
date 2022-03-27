@@ -13,14 +13,21 @@ const Profile = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
+  const [contactNum, setContactNum] = useState("");
+  const [description, setDescription] = useState("");
 
   const [avatar, setAvatar] = useState("");
   const [avatarPreview, setAvatarPreview] = useState("/images/ava.png");
 
-  const { user: loadedUser, loading } = useSelector((state) => state.auth);
+  const { user: loadedUser, loading } = useSelector(
+    (state) => state.loadedUser
+  );
   const {
     error,
     isUpdated,
@@ -29,8 +36,15 @@ const Profile = () => {
 
   useEffect(() => {
     if (loadedUser) {
-      setName(loadedUser.name);
+      setFirstName(loadedUser.firstName);
+      setLastName(loadedUser.lastName);
+      setUsername(loadedUser.username);
+
       setEmail(loadedUser.email);
+      setAddress(loadedUser.address);
+      setContactNum(loadedUser.contactNum);
+      setDescription(loadedUser.description);
+
       setAvatarPreview(loadedUser.avatar.url);
     }
     if (error) {
@@ -47,9 +61,14 @@ const Profile = () => {
     e.preventDefault();
 
     const userData = {
-      name,
+      firstName,
+      lastName,
+      username,
       email,
       password,
+      address,
+      contactNum,
+      description,
       avatar,
     };
 
@@ -75,79 +94,204 @@ const Profile = () => {
   };
 
   return (
-    <>
-      <div className="flex flex-col items-center justify-center bg-gray-300 h-screen select-none">
-        <div class="flex flex-col bg-white px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-xl shadow-2xl w-full max-w-md border-l-4 border-purple-600">
-          <div class="mt-10">
-            <form onSubmit={submitHandler}>
-              <div class="relative w-full mb-3">
-                <input
-                  type="text"
-                  className="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                  placeholder="Your name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
+    <div>
+      <link
+        rel="stylesheet"
+        href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+      />
+      <section class="py-1 bg-blueGray-50">
+        <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
+          <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+            <div class="rounded-t bg-white mb-0 px-6 py-6">
+              <div class="text-center flex justify-between">
+                <h6 class="text-blueGray-700 text-xl font-bold">My account</h6>
               </div>
-              <div class="relative w-full mb-3">
-                <input
-                  type="email"
-                  className="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                  placeholder="your@email.here"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div class="relative w-full mb-3">
-                <input
-                  type="password"
-                  className="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                  placeholder="●●●●●●●●●●"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <label htmlFor="avatar_upload">Avatar</label>
-              <div className="d-flex align-items-center">
-                <div>
-                  <figure className="avatar mr-3 item-rtl">
-                    <Image
-                      width="100px"
-                      height="100px"
-                      src={avatarPreview}
-                      className="rounded-full m-2"
-                      alt="image"
-                    />
-                  </figure>
+            </div>
+            <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+              <form onSubmit={submitHandler}>
+                <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                  User Information
+                </h6>
+                <div class="flex flex-wrap">
+                  <div class="w-full lg:w-6/12 px-4">
+                    <div class="relative w-full mb-3">
+                      <label
+                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlfor="grid-password"
+                      >
+                        First Name
+                      </label>{" "}
+                      <input
+                        type="text"
+                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div class="w-full lg:w-6/12 px-4">
+                    <div class="relative w-full mb-3">
+                      <label
+                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlfor="grid-password"
+                      >
+                        Last Name
+                      </label>{" "}
+                      <input
+                        type="text"
+                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div class="w-full lg:w-6/12 px-4">
+                    <div class="relative w-full mb-3">
+                      <label
+                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlfor="grid-password"
+                      >
+                        Username
+                      </label>{" "}
+                      <input
+                        type="text"
+                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div class="w-full lg:w-6/12 px-4">
+                    <div class="relative w-full mb-3">
+                      <label
+                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlfor="grid-password"
+                      >
+                        Email
+                      </label>{" "}
+                      <input
+                        type="email"
+                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </div>
+                  </div>
                 </div>
-                <div className="custom-file">
+                <div class="flex flex-wrap">
+                  <div class="w-full lg:w-6/12 px-4">
+                    <div class="relative w-full mb-3">
+                      <label
+                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlfor="grid-password"
+                      >
+                        Password
+                      </label>{" "}
+                      <input
+                        type="password"
+                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        placeholder="●●●●●●●●●●"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div class="w-full lg:w-6/12 px-4">
+                    <div class="relative w-full mb-3">
+                      <label
+                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlfor="grid-password"
+                      >
+                        Contact Number
+                      </label>{" "}
+                      <input
+                        type="text"
+                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={contactNum}
+                        onChange={(e) => setContactNum(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-wrap">
+                  <div class="w-full lg:w-12/12 px-4">
+                    <div class="relative w-full mb-3">
+                      <label
+                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlfor="grid-password"
+                      >
+                        Address
+                      </label>{" "}
+                      <input
+                        type="text"
+                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-wrap">
+                  <div class="w-full lg:w-12/12 px-4">
+                    <div class="relative w-full mb-3">
+                      <label
+                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        htmlfor="grid-password"
+                      >
+                        About me
+                      </label>
+                      <textarea
+                        type="text"
+                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        rows="4"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                  choose your AVATAR
+                </h6>
+                <div className="d-flex align-items-center">
+                  <div>
+                    <figure className="avatar mr-3 item-rtl">
+                      <Image
+                        width="100px"
+                        height="100px"
+                        src={avatarPreview}
+                        className="rounded-full m-2"
+                        alt="image"
+                      />
+                    </figure>
+                  </div>
                   <input
                     type="file"
                     name="avatar"
-                    className="custom-file-input"
                     id="customFile"
                     accept="images/*"
                     onChange={onChange}
                   />
-                  <label className="text-sm" htmlFor="customFile">
-                    Choose Avatar
-                  </label>
+                </div>{" "}
+                <div className="flex justify-center items-align">
+                  <button
+                    type="submit"
+                    className="p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 mb-3 focus:bg-purple-700 hover:bg-purple-500"
+                    disabled={loading ? true : false}
+                  >
+                    {loading ? <SyncOutlined spin /> : "Update"}
+                  </button>
                 </div>
-              </div>
-              <div class="text-center mt-6">
-                <button
-                  type="submit"
-                  className="p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500"
-                  disabled={updateLoading ? true : false}
-                >
-                  {updateLoading ? <SyncOutlined spin /> : "Update"}
-                </button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    </>
+      </section>
+    </div>
   );
 };
 

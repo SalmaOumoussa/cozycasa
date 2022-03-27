@@ -12,13 +12,13 @@ class APIFeatures {
           },
         }
       : {};
-    console.log(location);
+    // console.log(location);
     this.query = this.query.find({ ...location });
     return this;
   }
   filter() {
     const queryCopy = { ...this.queryString };
-    console.log(queryCopy);
+    // console.log(queryCopy);
 
     //Remove fields from query
     const removeFields = ["location", "page"];

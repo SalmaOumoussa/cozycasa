@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import validator from "validator";
 import bcrypt from "bcryptjs";
+import crypto from "crypto";
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -43,7 +44,7 @@ const userSchema = new mongoose.Schema({
   description: {
     type: String,
     required: [true, "Please enter your description"],
-    maxLength: [100, "Your description cannot be longer than 100 characters"],
+    maxLength: [500, "Your description cannot be longer than 100 characters"],
   },
   avatar: {
     public_id: {
@@ -79,6 +80,20 @@ userSchema.pre("save", async function (next) {
 // Compare Password
 userSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
+};
+
+// Generate pass reset toke
+userSchema.methods.getResetPasswordToken = function () {
+  // generate token
+  const resetToken = crypto.randomBytes(20).toString("hex");
+  // encrypt password
+  this.resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+  // set token expire time
+  this.resetPasswordExpire = Date.now() + 30 * 60 * 1000;
+  return resetToken;
 };
 
 export default mongoose.models.User || mongoose.model("User", userSchema);

@@ -11,7 +11,7 @@ const Listing = ({ room }) => {
 
       {/* <!-- ====== Cards Section Start --> */}
 
-      <div class="w-full md:w-1/2 xl:w-1/3 px-4">
+      <div class="w-full md:w-1/2 xl:w-1/3 px-4 mt-2">
         <div class="bg-white rounded-lg overflow-hidden mb-10">
           <img
             src="https://cdn.tailgrids.com/1.0/assets/images/cards/card-01/image-01.jpg"

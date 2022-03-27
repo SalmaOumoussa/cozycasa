@@ -23,5 +23,11 @@ module.exports = {
     CLOUDINARY_CLOUD_NAME: "drckds98u",
     CLOUDINARY_API_KEY: "718781855449732",
     CLOUDINARY_SECRET_KEY: "Oi-2K01Rv16q3_sxOUWI61nLWl8",
+    SMTP_HOST: "smtp.mailtrap.io",
+    SMTP_PORT: "2525",
+    SMTP_USER: "c05501ad918635",
+    SMTP_PASSWORD: "519761e7251733",
+    SMTP_FROM_NAME: "CozyCasa",
+    SMTP_FROM_EMAIL: "noreply@cozycasa.com",
   },
 };

@@ -8,140 +8,6 @@ import { SyncOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-// const Register = () => {
-//   const dispatch = useDispatch();
-//   const router = useRouter();
-
-//   const [name, setName] = useState("");
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-
-//   const [avatar, setAvatar] = useState("");
-//   const [avatarPreview, setAvatarPreview] = useState("/images/ava.png");
-
-//   const { success, error, loading } = useSelector((state) => state.auth);
-
-//   useEffect(() => {
-//     if (success) {
-//       router.push("/login");
-//     }
-
-//     if (error) {
-//       toast.error(error);
-//       dispatch(clearErrors());
-//     }
-//   }, [dispatch, success, error]);
-
-//   const submitHandler = (e) => {
-//     e.preventDefault();
-
-//     const userData = {
-//       name,
-//       email,
-//       password,
-//       avatar,
-//     };
-
-//     dispatch(registerUser(userData));
-//   };
-
-//   const onChange = (e) => {
-//     if (e.target.name === "avatar") {
-//       const reader = new FileReader();
-
-//       reader.onload = () => {
-//         if (reader.readyState === 2) {
-//           setAvatar(reader.result);
-//           setAvatarPreview(reader.result);
-//         }
-//       };
-//       if (e.target.files[0]) {
-//         reader.readAsDataURL(e.target.files[0]);
-//       }
-//     }
-//     // else {
-//     //   setUser({ ...user, [e.target.name]: e.target.value });
-//     // }
-//   };
-//   return (
-//     <>
-//       <div className="flex flex-col items-center justify-center bg-gray-300 h-screen select-none">
-//         <div class="flex flex-col bg-white px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-xl shadow-2xl w-full max-w-md border-l-4 border-purple-600">
-//           <div class="mt-10">
-//             <form onSubmit={submitHandler}>
-//               <div class="relative w-full mb-3">
-//                 <input
-//                   type="text"
-//                   className="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-//                   placeholder="Your name"
-//                   value={name}
-//                   onChange={(e) => setName(e.target.value)}
-//                 />
-//               </div>
-//               <div class="relative w-full mb-3">
-//                 <input
-//                   type="email"
-//                   className="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-//                   placeholder="your@email.here"
-//                   value={email}
-//                   onChange={(e) => setEmail(e.target.value)}
-//                 />
-//               </div>
-//               <div class="relative w-full mb-3">
-//                 <input
-//                   type="password"
-//                   className="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-//                   placeholder="●●●●●●●●●●"
-//                   value={password}
-//                   onChange={(e) => setPassword(e.target.value)}
-//                 />
-//               </div>
-//               <label htmlFor="avatar_upload">Avatar</label>
-//               <div className="d-flex align-items-center">
-//                 <div>
-//                   <figure className="avatar mr-3 item-rtl">
-//                     <Image
-//                       width="100px"
-//                       height="100px"
-//                       src={avatarPreview}
-//                       className="rounded-full m-2"
-//                       alt="image"
-//                     />
-//                   </figure>
-//                 </div>
-//                 <div className="custom-file">
-//                   <input
-//                     type="file"
-//                     name="avatar"
-//                     className="custom-file-input"
-//                     id="customFile"
-//                     accept="images/*"
-//                     onChange={onChange}
-//                   />
-//                   <label className="text-sm" htmlFor="customFile">
-//                     Choose Avatar
-//                   </label>
-//                 </div>
-//               </div>
-//               <div class="text-center mt-6">
-//                 <button
-//                   type="submit"
-//                   className="p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500"
-//                   disabled={loading ? true : false}
-//                 >
-//                   {loading ? <SyncOutlined spin /> : "REGISTER"}
-//                 </button>
-//               </div>
-//             </form>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-// export default Register;
-
-/********************************************************************************************/
 const Register = () => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -156,16 +22,14 @@ const Register = () => {
     description: "",
   });
 
-  const [firstName, setFirstName] = useState("anas");
-  const [lastName, setLastName] = useState("hamadi");
-  const [username, setUsername] = useState("anas");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [address, setAddress] = useState("Agadir");
-  const [contactNum, setContactNum] = useState("23456789");
-  const [description, setDescription] = useState(
-    "SDFGHJKKJHGFGHJKLKJHGFGHJKLKJHGF"
-  );
+  const [address, setAddress] = useState("");
+  const [contactNum, setContactNum] = useState("");
+  const [description, setDescription] = useState("");
 
   const [avatar, setAvatar] = useState("");
   const [avatarPreview, setAvatarPreview] = useState("/images/ava.png");
@@ -402,13 +266,15 @@ const Register = () => {
                     onChange={onChange}
                   />
                 </div>
-                <button
-                  type="submit"
-                  className="p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 m-auto mb-3 justify-center focus:bg-purple-700 hover:bg-purple-500"
-                  disabled={loading ? true : false}
-                >
-                  {loading ? <SyncOutlined spin /> : "REGISTER"}
-                </button>
+                <div className="flex justify-center items-align">
+                  <button
+                    type="submit"
+                    className="p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 mb-3 focus:bg-purple-700 hover:bg-purple-500"
+                    disabled={loading ? true : false}
+                  >
+                    {loading ? <SyncOutlined spin /> : "REGISTER"}
+                  </button>
+                </div>
               </form>
             </div>
           </div>

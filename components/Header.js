@@ -22,12 +22,13 @@ function Header({ placeholder }) {
     signOut();
   };
   const dispatch = useDispatch();
-  const { user, loading } = useSelector((state) => state.auth);
+  const { user, loading } = useSelector((state) => state.loadedUser);
   useEffect(() => {
     dispatch(loadUser());
   }, [dispatch]);
   const router = useRouter();
   const { location } = router.query;
+  const token = router.query.token;
 
   // Showing Or not/ toggling the dropdown
   const [showOptions, setShowOptions] = useState();
@@ -39,30 +40,30 @@ function Header({ placeholder }) {
     if (showOptions) {
       if (user) {
         return (
-          <div class=" inline-block ">
+          <div className="inline-block">
             <div
-              class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+              className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="menu-button"
-              tabindex="-1"
+              tabIndex="-1"
             >
-              <div class="py-1" role="none">
+              <div className="py-1" role="none">
                 <Link href="/profile">
                   <a
                     className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200 font-semibold"
                     role="menuitem"
-                    tabindex="-1"
+                    tabIndex="-1"
                     id="menu-item-0"
                   >
                     {user && user.name}
                   </a>
                 </Link>
-                <Link href="/bookings">
+                <Link href="/bookings/me">
                   <a
                     className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200 font-semibold"
                     role="menuitem"
-                    tabindex="-1"
+                    tabIndex="-1"
                     id="menu-item-0"
                   >
                     My bookings
@@ -72,7 +73,7 @@ function Header({ placeholder }) {
                   onClick={handleLogout}
                   className="text-purple-800 block px-4 py-2 text-sm hover:bg-gray-200 font-semibold cursor-pointer"
                   role="menuitem"
-                  tabindex="-1"
+                  tabIndex="-1"
                   id="menu-item-1"
                 >
                   Logout
@@ -84,20 +85,20 @@ function Header({ placeholder }) {
       }
       if (!user) {
         return (
-          <div class=" inline-block ">
+          <div className=" inline-block ">
             <div
-              class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+              className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="menu-button"
-              tabindex="-1"
+              tabIndex="-1"
             >
-              <div class="py-1" role="none">
+              <div className="py-1" role="none">
                 <Link href="/register">
                   <a
-                    class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
+                    className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200 font-semibold"
                     role="menuitem"
-                    tabindex="-1"
+                    tabIndex="-1"
                     id="menu-item-0"
                   >
                     Register
@@ -105,9 +106,9 @@ function Header({ placeholder }) {
                 </Link>
                 <Link href="/login">
                   <a
-                    class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
+                    className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200 font-semibold"
                     role="menuitem"
-                    tabindex="-1"
+                    tabIndex="-1"
                     id="menu-item-1"
                   >
                     Login
@@ -175,6 +176,22 @@ function Header({ placeholder }) {
             </button>
           </h1>
         </div>
+      ) : router.pathname == `/password/reset/[token]` ? (
+        <div className="flex items-center py-2 font-bold text-xl">
+          <h1>Enter below your new wished password!</h1>
+        </div>
+      ) : router.pathname == `/allListings` ? (
+        <div className="flex items-center py-2 font-semibold text-sm">
+          <h1>
+            Showing All Available Listings!{" "}
+            <button className="text-white bg-purple-500 px-5 py-2 shadow-md rounded-full font-bold my-3 hover:shadow-xl active:scale-90 transition duration-150">
+              {/* <SearchIcon className="h-4 cursor-pointer" /> */}
+              <Link href="/search">
+                <a>Serach for stays?</a>
+              </Link>
+            </button>
+          </h1>
+        </div>
       ) : (
         <div className="flex items-center py-2 font-semibold text-base">
           <h1>
@@ -196,7 +213,7 @@ function Header({ placeholder }) {
           <MenuIcon onClick={handleClick} className="h-6" />
         </div>
         {user ? (
-          <Link href="/me/update">
+          <Link href="/me/profile">
             <figure>
               <Image
                 src={user.avatar && user.avatar.url}
