@@ -116,7 +116,7 @@ const myBookings = catchAsyncErrors(async (req, res) => {
     })
     .populate({
       path: "user",
-      select: "name email",
+      select: "firstName email",
     });
 
   res.status(200).json({
