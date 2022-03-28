@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 import RoomReview from "../../components/room/RoomReview";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { clearErrors } from "../../redux/actions/roomActions";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
@@ -11,18 +11,19 @@ import { Carousel } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
+import { CHECK_BOOKING_RESET } from "../../redux/constants/bookingConstants";
+import getStripe from "../../utils/getStripe";
 import {
   checkBooking,
   getBookedDates,
 } from "../../redux/actions/bookingActions";
-import { CHECK_BOOKING_RESET } from "../../redux/constants/bookingConstants";
-
 function RoomDetails() {
   const router = useRouter();
   const [checkInDate, setCheckInDate] = useState();
   const [checkOutDate, setCheckOutDate] = useState();
   const [daysOfStay, setDaysOfStay] = useState();
   const [paymentLoading, setPaymentLoading] = useState(false);
+
   const dispatch = useDispatch();
   function check(exists) {
     if (exists) {
@@ -45,10 +46,38 @@ function RoomDetails() {
     excludedDates.push(new Date(date));
   });
 
+  const bookRoom = async (id, pricePerNight) => {
+    setPaymentLoading(true);
+
+    const amount = pricePerNight * daysOfStay;
+
+    try {
+      const link = `/api/checkout_session/${id}?checkInDate=${checkInDate.toISOString()}&checkOutDate=${checkOutDate.toISOString()}&daysOfStay=${daysOfStay}`;
+
+      const { data } = await axios.get(link, { params: { amount } });
+
+      const stripe = await getStripe();
+
+      // Redirect to checkout
+      stripe.redirectToCheckout({ sessionId: data.id });
+
+      setPaymentLoading(false);
+    } catch (error) {
+      setPaymentLoading(false);
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
+
   useEffect(() => {
     dispatch(getBookedDates(id));
+
     toast.error(error);
     dispatch(clearErrors());
+
+    return () => {
+      dispatch({ type: CHECK_BOOKING_RESET });
+    };
   }, [dispatch, id]);
 
   const onChange = (dates) => {
@@ -276,10 +305,11 @@ function RoomDetails() {
 
                 {available && user && (
                   <button
-                    onClick={newBookingHandler}
+                    onClick={() => bookRoom(room._id, room.pricePerNight)}
+                    disabled={bookingLoading || paymentLoading ? true : false}
                     className="flex ml-auto text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded"
                   >
-                    Book It
+                    Book It - ${daysOfStay * room.pricePerNight}
                   </button>
                 )}
               </div>

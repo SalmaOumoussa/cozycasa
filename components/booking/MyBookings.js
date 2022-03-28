@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { EyeIcon, DownloadIcon } from "@heroicons/react/solid";
 import { MDBDataTable } from "mdbreact";
-// import easyinvoice from "easyinvoice";
+import easyinvoice from "easyinvoice";
 
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -13,13 +13,58 @@ const MyBookings = () => {
   const dispatch = useDispatch();
 
   const { bookings, error } = useSelector((state) => state.bookings);
-  console.log(bookings);
   useEffect(() => {
     if (error) {
       toast.error(error);
       dispatch(clearErrors());
     }
   }, [dispatch]);
+
+  const downloadInvoice = async (booking) => {
+    const data = {
+      documentTitle: "Booking INVOICE", //Defaults to INVOICE
+      currency: "USD",
+      taxNotation: "vat", //or gst
+      marginTop: 25,
+      marginRight: 25,
+      marginLeft: 25,
+      marginBottom: 25,
+      logo: "https://res.cloudinary.com/drckds98u/image/upload/v1648410482/cc/logo_lklbov.png",
+      sender: {
+        company: "Book IT",
+        address: "Km 9, Route d'Agadir, Essaouira Aljadida BP. 383, Essaouira",
+        zip: "10001",
+        city: "Essaouira",
+        country: "Morocco",
+      },
+      client: {
+        company: `${booking.user.firstName}`,
+        address: `${booking.user.email}`,
+        zip: "",
+        city: `Check In: ${new Date(booking.checkInDate).toLocaleString(
+          "en-US"
+        )}`,
+        country: `Check In: ${new Date(booking.checkOutDate).toLocaleString(
+          "en-US"
+        )}`,
+      },
+      invoiceNumber: `${booking._id}`,
+      invoiceDate: `${new Date(Date.now()).toLocaleString("en-US")}`,
+      products: [
+        {
+          quantity: `${booking.daysOfStay}`,
+          description: `${booking.room.name}`,
+          tax: 0,
+          price: booking.room.pricePerNight,
+        },
+      ],
+      bottomNotice:
+        "This is auto generated Invoice of your booking on CozyCasa.",
+    };
+
+    const result = await easyinvoice.createInvoice(data);
+    easyinvoice.download(`invoice_${booking._id}.pdf`, result.pdf);
+  };
 
   const setBookings = () => {
     const data = {
@@ -69,7 +114,7 @@ const MyBookings = () => {
 
               <button
                 className="btn btn-success mx-2"
-                // onClick={() => downloadInvoice(booking)}
+                onClick={() => downloadInvoice(booking)}
               >
                 <DownloadIcon />
               </button>
@@ -81,7 +126,7 @@ const MyBookings = () => {
     return data;
   };
   return (
-    <>
+    <div className="container container-fluid">
       <h1 className="font-bold text-2xl">My Bookings</h1>
       <MDBDataTable
         data={setBookings()}
@@ -90,7 +135,7 @@ const MyBookings = () => {
         striped
         hover
       />
-    </>
+    </div>
   );
 };
 

@@ -40,29 +40,35 @@ const allListings = () => {
   }
   return (
     <>
-      <Header />
-      {rooms && rooms.length === 0 ? (
-        <p>No rooms were found!</p>
-      ) : (
-        rooms.map((room) => <Listing key={room._id} room={room} />)
-      )}
-      {resPerPage < count && (
-        <div className="d-flex justify-content-center mt-5">
-          <Pagination
-            className=""
-            activePage={page}
-            itemsCountPerPage={resPerPage}
-            totalItemsCount={roomsCount}
-            onChange={handlePagination}
-            nextPageText={"Next"}
-            prevPageText={"Prev"}
-            firstPageText={"First"}
-            lastPageText={"Last"}
-            itemClass="page-item"
-            linkClass="page-link"
-          />
-        </div>
-      )}
+      <body className="bg-white">
+        <Header />
+        {rooms && rooms.length === 0 ? (
+          <p>No rooms were found!</p>
+        ) : (
+          <div class=" w-full grid grid-cols-3 ">
+            {rooms.map((room) => (
+              <Listing key={room._id} room={room} />
+            ))}
+          </div>
+        )}
+        {resPerPage < count && (
+          <div className="flex-auto justify-content-center mt-5">
+            <Pagination
+              className=""
+              activePage={page}
+              itemsCountPerPage={resPerPage}
+              totalItemsCount={roomsCount}
+              onChange={handlePagination}
+              nextPageText={"Next"}
+              prevPageText={"Prev"}
+              firstPageText={"First"}
+              lastPageText={"Last"}
+              itemClass="page-item"
+              linkClass="page-link"
+            />
+          </div>
+        )}
+      </body>
     </>
   );
 };
