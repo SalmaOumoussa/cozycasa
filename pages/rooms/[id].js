@@ -4,12 +4,9 @@ import Banner from "../../components/Banner";
 import Footer from "../../components/Footer";
 import { getRoomDetails } from "../../redux/actions/roomActions";
 import { wrapper } from "../../redux/store";
-import { useSelector } from "react-redux";
 import RoomDetails from "../../components/room/RoomDetails";
 
 export default function RoomDetailsPage() {
-  const { rooms } = useSelector((state) => state.allRooms);
-  // console.log(rooms);
   return (
     <div className="">
       <Head>

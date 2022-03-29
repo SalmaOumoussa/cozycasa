@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Image from "next/image";
 import RoomReview from "../../components/room/RoomReview";
 import { toast, ToastContainer } from "react-toastify";
 import { clearErrors } from "../../redux/actions/roomActions";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { Carousel } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
@@ -17,6 +15,8 @@ import {
   checkBooking,
   getBookedDates,
 } from "../../redux/actions/bookingActions";
+import ListReviews from "../review/ListReviews";
+import DaisyModal from "../review/DaisyModal";
 function RoomDetails() {
   const router = useRouter();
   const [checkInDate, setCheckInDate] = useState();
@@ -68,6 +68,7 @@ function RoomDetails() {
       toast.error(error.message);
     }
   };
+  const { id } = router.query;
 
   useEffect(() => {
     dispatch(getBookedDates(id));
@@ -99,8 +100,6 @@ function RoomDetails() {
       );
     }
   };
-
-  const { id } = router.query;
 
   const newBookingHandler = async () => {
     const bookingData = {
@@ -314,7 +313,16 @@ function RoomDetails() {
                 )}
               </div>
               <br />
-              <RoomReview />
+              <DaisyModal />
+              {room.reviews && room.reviews.length > 0 ? (
+                <ListReviews reviews={room.reviews} />
+              ) : (
+                <p className="text-xl text-rose-900 font-semibold m-auto">
+                  No Reviews were found
+                </p>
+              )}
+
+              {/* <NewReview /> */}
             </div>
           </div>
         </section>

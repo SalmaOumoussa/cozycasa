@@ -38,10 +38,10 @@ const NewPassword = () => {
   };
   return (
     <>
-      <script
+      {/* <script
         src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
         defer
-      ></script>
+      ></script> */}
 
       <div className="container max-w-full mx-auto md:py-24 px-6 -my-10">
         <div className="max-w-sm mx-auto px-6">

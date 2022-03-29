@@ -31,7 +31,7 @@ const MyBookings = () => {
       marginBottom: 25,
       logo: "https://res.cloudinary.com/drckds98u/image/upload/v1648410482/cc/logo_lklbov.png",
       sender: {
-        company: "Book IT",
+        company: "CozyCasa",
         address: "Km 9, Route d'Agadir, Essaouira Aljadida BP. 383, Essaouira",
         zip: "10001",
         city: "Essaouira",
@@ -107,17 +107,14 @@ const MyBookings = () => {
           actions: (
             <>
               <Link href={`/bookings/${booking._id}`}>
-                <a className="btn btn-primary">
+                <a>
                   <EyeIcon />
                 </a>
               </Link>
 
-              <button
-                className="btn btn-success mx-2"
-                onClick={() => downloadInvoice(booking)}
-              >
+              <div onClick={() => downloadInvoice(booking)}>
                 <DownloadIcon />
-              </button>
+              </div>
             </>
           ),
         });
