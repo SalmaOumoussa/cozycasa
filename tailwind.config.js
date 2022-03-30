@@ -9,7 +9,8 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
-    require("daisyui"),
-    require("flowbite/plugin"),
+    // require("daisyui"),
+    // require("flowbite/plugin"),
+    require("tailwind-scrollbar-hide"),
   ],
 };
