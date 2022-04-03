@@ -1,13 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import User from "../../models/user";
 
 const RoomReview = ({ review }) => {
-  // const { user } = useSelector((state) => state.loadedUser);
-  async function setName(id) {
-    const user = await User.findById(id);
-    return user;
-  }
+  const { user } = useSelector((state) => state.loadedUser);
+  console.log(user);
   return (
     <div className="flex items-start  mt-12">
       <div className="flex-shrink-0">
@@ -15,11 +11,7 @@ const RoomReview = ({ review }) => {
           <div className="relative w-16 h-16 rounded-full overflow-hidden">
             <img
               className="absolute top-0 left-0 w-full h-full bg-cover object-fit object-cover"
-              src={
-                setName(review.user)._id == review.user
-                  ? setName(review.user).avatar.url
-                  : "/images/ava.png"
-              }
+              src="/images/ava.png"
               alt="Profile picture"
             />
             <div className="absolute top-0 left-0 w-full h-full rounded-full shadow-inner"></div>
@@ -28,13 +20,7 @@ const RoomReview = ({ review }) => {
       </div>
       <div className="ml-6">
         <p className="flex items-baseline">
-          <span className="text-gray-600 font-bold">
-            {setName(review.user)._id == review.user
-              ? setName(review.user).firstName +
-                " " +
-                setName(review.user).lastName
-              : "Undefined"}
-          </span>
+          <span className="text-gray-600 font-bold">"Undefined"</span>
         </p>
         <div className="flex items-center mt-4 text-gray-600"></div>
         <div className="mt-3">

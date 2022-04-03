@@ -110,7 +110,7 @@ const Listing = ({ room }) => {
               <p class="text-base text-body-color leading-relaxed mb-7">
                 {room.description}
               </p>
-              <Link href={`/rooms/${room._id}`}>
+              <Link href={`/room/${room._id}`}>
                 <a
                   class="
                      inline-block

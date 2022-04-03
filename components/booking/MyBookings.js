@@ -29,7 +29,7 @@ const MyBookings = () => {
       marginRight: 25,
       marginLeft: 25,
       marginBottom: 25,
-      logo: "https://res.cloudinary.com/drckds98u/image/upload/v1648410482/cc/logo_lklbov.png",
+      logo: "/images/logo.png",
       sender: {
         company: "CozyCasa",
         address: "Km 9, Route d'Agadir, Essaouira Aljadida BP. 383, Essaouira",
@@ -52,10 +52,10 @@ const MyBookings = () => {
       invoiceDate: `${new Date(Date.now()).toLocaleString("en-US")}`,
       products: [
         {
-          quantity: `${booking.daysOfStay}`,
-          description: `${booking.room.name}`,
+          Days_Of_Stay: `${booking.daysOfStay}`,
+          Room_ID: `${booking.room}`,
           tax: 0,
-          price: booking.room.pricePerNight,
+          price: booking.amountPaid,
         },
       ],
       bottomNotice:

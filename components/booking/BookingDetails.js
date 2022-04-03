@@ -168,7 +168,7 @@ const BookingDetails = () => {
                   <b>{isPaid ? "Paid" : "Not Paid"}</b>
                 </p>
 
-                {user && user.role === "admin" && (
+                {user && user.role === "Admin" && (
                   <>
                     <h4 className="my-4">Stripe Payment ID</h4>
                     <p className="redColor">
@@ -182,7 +182,7 @@ const BookingDetails = () => {
                   Booked Room:
                 </h2>
                 <button
-                  onClick={() => router.push(`/rooms/${booking.room._id}`)}
+                  onClick={() => router.push(`/room/${booking.room._id}`)}
                   className="dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100 focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-base flex items-center justify-center leading-none text-white bg-gray-800 w-full py-4 hover:bg-gray-700 focus:outline-none"
                 >
                   <svg

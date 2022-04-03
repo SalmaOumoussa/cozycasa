@@ -9,7 +9,7 @@ function Cards({ room } /*{ img, title }*/) {
         <Image src="/images/logo.png" height="100" width="100" />
       </div>
       <h3 className="text-2xl mt-3">{}</h3>
-      <Link href={`/rooms/${room._id}`}>
+      <Link href={`/room/${room._id}`}>
         <a>{room.name}</a>
       </Link>
       <p>${room.pricePerNight} / Night</p>

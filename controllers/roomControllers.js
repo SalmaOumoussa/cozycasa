@@ -1,6 +1,7 @@
 import Room from "../models/room";
 import Booking from "../models/booking";
-
+const cloudinary = require("cloudinary").v2;
+// import cloudinary from "cloudinary";
 import ErrorHandler from "../utils/errorHandler";
 import AsyncCatchErrors from "../middlewares/catchAsyncErrors";
 import APIFeatures from "../utils/apiFeatures";
@@ -28,9 +29,27 @@ const allRooms = AsyncCatchErrors(async (req, res) => {
   });
 });
 
-// create new Room => /api/rooms
+// Create new room   =>   /api/rooms
 const newRoom = AsyncCatchErrors(async (req, res) => {
+  const images = req.body.images;
+
+  let imagesLinks = [];
+  for (let i = 0; i < images.length; i++) {
+    const result = await cloudinary.uploader.upload(images[i], {
+      folder: "cc/listings",
+    });
+
+    imagesLinks.push({
+      public_id: result.public_id,
+      url: result.secure_url,
+    });
+  }
+
+  req.body.images = imagesLinks;
+  req.body.user = req.user._id;
+
   const room = await Room.create(req.body);
+
   res.status(200).json({
     success: true,
     room,
@@ -49,18 +68,43 @@ const getSingleRoom = AsyncCatchErrors(async (req, res, next) => {
   });
 });
 
-// Update Room details => /api/rooms/:id
-
+// Update room details   =>   /api/rooms/:id
 const updateRoom = AsyncCatchErrors(async (req, res) => {
   let room = await Room.findById(req.query.id);
+
   if (!room) {
-    return next(new ErrorHandler("Room not found with this", 404));
+    return next(new ErrorHandler("Room not found with this ID", 404));
   }
+
+  if (req.body.images) {
+    // Delete images associated with the room
+    for (let i = 0; i < room.images.length; i++) {
+      await cloudinary.uploader.destroy(room.images[i].public_id);
+    }
+
+    let imagesLinks = [];
+    const images = req.body.images;
+
+    for (let i = 0; i < images.length; i++) {
+      const result = await cloudinary.uploader.upload(images[i], {
+        folder: "cc/listings",
+      });
+
+      imagesLinks.push({
+        public_id: result.public_id,
+        url: result.secure_url,
+      });
+    }
+
+    req.body.images = imagesLinks;
+  }
+
   room = await Room.findByIdAndUpdate(req.query.id, req.body, {
     new: true,
     runValidators: true,
     useFindAndModify: false,
   });
+
   res.status(200).json({
     success: true,
     room,
@@ -68,7 +112,6 @@ const updateRoom = AsyncCatchErrors(async (req, res) => {
 });
 
 // Delete Room details => /api/rooms/:id
-
 const deleteRoom = AsyncCatchErrors(async (req, res) => {
   const room = await Room.findById(req.query.id);
   if (!room) {

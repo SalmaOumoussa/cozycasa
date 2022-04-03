@@ -35,7 +35,7 @@ const DaisyModal = () => {
       toast.success("Review is posted.");
       dispatch({ type: NEW_REVIEW_RESET });
 
-      router.push(`/rooms/${id}`);
+      router.push(`/room/${id}`);
     }
   }, [dispatch, success, error, id]);
 
@@ -52,7 +52,7 @@ const DaisyModal = () => {
     <div>
       <label
         htmlFor="my-modal-3"
-        className="btn modal-button bg-indigo-800 text-white"
+        className="btn modal-button bg-purple-800 text-black"
       >
         Submit Review
       </label>
@@ -60,18 +60,18 @@ const DaisyModal = () => {
       <form action="">
         <input type="checkbox" id="my-modal-3" className="modal-toggle" />
         <div className="modal">
-          <div className="modal-box relative bg-indigo-700">
+          <div className="modal-box relative bg-purple-300">
             <label
               htmlFor="my-modal-3"
               className="btn btn-sm btn-circle absolute right-2 top-2"
             >
               ✕
             </label>
-            <h3 className="text-lg font-bold text-white">
+            <h3 className="text-lg  m-auto font-bold text-black">
               Help us & the Community with your feedback!
             </h3>
             <textarea
-              className="w-full rounded-xl"
+              className="w-full h-20 rounded-xl"
               placeholder="your review..."
               value={comment}
               onChange={(e) => setComment(e.target.value)}
@@ -79,7 +79,7 @@ const DaisyModal = () => {
             ></textarea>
             <button
               onClick={submitHandler}
-              className="my-2 w-full glass rounded-xl font-bold text-white"
+              className="my-2 mx_3 p-4 w-full glass rounded-xl font-bold text-black"
             >
               Submit
             </button>
