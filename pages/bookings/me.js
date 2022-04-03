@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { getSession } from "next-auth/react";
 
-import MyBookings from "../../components/booking/MyBookings";
 import Booking from "../../components/booking/Booking";
 import Header from "../../components/Header";
 
@@ -27,7 +26,7 @@ const MyBookingsPage = () => {
   return (
     <>
       <Header />
-      <MyBookings />
+      <Booking />
     </>
   );
 };

@@ -6,6 +6,8 @@ import Cards from "../components/Cards";
 import InfoCard from "../components/InfoCard";
 import LCard from "../components/LargeCard";
 import Footer from "../components/Footer";
+import SmallCard from "../components/SmallCard";
+
 import Listing from "../components/Listing";
 import { format } from "date-fns";
 import { useRouter } from "next/router";
@@ -16,7 +18,7 @@ import { toast } from "react-toastify";
 import { clearErrors } from "../redux/actions/roomActions";
 import React, { useEffect } from "react";
 import Pagination from "react-js-pagination";
-
+// import Pagination from "rc-pagination";
 export default function Home(/*{ exploreData, cardData }*/) {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -86,7 +88,7 @@ export default function Home(/*{ exploreData, cardData }*/) {
                 <div class="flex flex-wrap -mx-4">
                   {rooms && rooms.length === 0 ? (
                     <p className="font-bold m-10 p-2 text-black border-4 border-black bg-purple-300">
-                      No rooms were found!
+                      No rooms were found !
                     </p>
                   ) : (
                     rooms.map((room) => <InfoCard key={room._id} room={room} />)
@@ -96,12 +98,28 @@ export default function Home(/*{ exploreData, cardData }*/) {
             </section>
           </>
         ) : (
-          <>
+          <div className="bg-white">
             <Header />
             <Banner />
             <main className="max-w-7xl mx-auto px-8 sm:px-16">
               <section className="pt-6">
-                <h2 className="text-4xl font-semibold pb-5">Explore nearby</h2>
+                <h2 className="text-4xl font-semibold pb-5">
+                  What our clients loves{" "}
+                </h2>
+                <div>
+                  {rooms.map(
+                    (room) =>
+                      room.ratings == 5 && (
+                        <SmallCard
+                          key={room._id}
+                          img={"/images/ava.png"}
+                          location={room.address}
+                          title={room.name}
+                          ratings={room.ratings}
+                        />
+                      )
+                  )}
+                </div>
               </section>
               <section>
                 <h2 className="text-4xl font-semibold py-8">Live anywhere</h2>
@@ -135,14 +153,14 @@ export default function Home(/*{ exploreData, cardData }*/) {
                 </div>
               )}
               <LCard
-                img="https://links.papareact.com/4cj"
-                title="The Greatest Outdoors"
-                description="Some Description"
+                img="https://i.ibb.co/3FJk0L4/arc2.jpg"
+                title="  Be A Part of Our Community, Get Notified by our Offers !"
+                description="Best Weekly offers Reminder just for YOU"
                 buttonText="Get Inspired"
               />
             </main>
             <Footer />
-          </>
+          </div>
         )}
       </div>
     </>
