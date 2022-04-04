@@ -1,13 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-
 function Banner() {
   const router = useRouter();
   return (
     <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[700px]">
       <Image
-        src="https://i.ibb.co/LnbLhZm/arcjpg.jpg"
+        src="https://res.cloudinary.com/drckds98u/image/upload/v1648631480/cc/banner_oi7yaz.jpg"
         layout="fill"
         objectFit="cover"
       />

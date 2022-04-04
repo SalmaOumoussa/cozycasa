@@ -7,6 +7,7 @@ import InfoCard from "../components/InfoCard";
 import LCard from "../components/LargeCard";
 import Footer from "../components/Footer";
 import SmallCard from "../components/SmallCard";
+import Link from "next/link";
 
 import Listing from "../components/Listing";
 import { format } from "date-fns";
@@ -23,16 +24,14 @@ export default function Home(/*{ exploreData, cardData }*/) {
   const dispatch = useDispatch();
   const router = useRouter();
   const { location, startDate, endDate, guestCapacity } = router.query;
-  const { rooms, resPerPage, roomsCount, filteredRoomsCount, error } =
-    useSelector((state) => state.allRooms);
-  // console.log(rooms);
-
-  let { page = 1 } = router.query;
-  page = Number(page);
-  let count = roomsCount;
-  if (location) {
-    count = filteredRoomsCount;
-  }
+  const { rooms, error } = useSelector((state) => state.allRooms);
+  console.log(rooms);
+  // let { page = 1 } = router.query;
+  // page = Number(page);
+  // let count = roomsCount;
+  // if (location) {
+  //   count = filteredRoomsCount;
+  // }
 
   useEffect(() => {
     if (error) {
@@ -106,54 +105,31 @@ export default function Home(/*{ exploreData, cardData }*/) {
                 <h2 className="text-4xl font-semibold pb-5">
                   What our clients loves{" "}
                 </h2>
-                <div>
+                <div className="my-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   {rooms.map(
                     (room) =>
-                      room.ratings == 5 && (
-                        <SmallCard
-                          key={room._id}
-                          img={"/images/ava.png"}
-                          location={room.address}
-                          title={room.name}
-                          ratings={room.ratings}
-                        />
+                      room.ratings >= 0 && (
+                        <Link href={`/rooms/${room._id}`}>
+                          <div>
+                            <SmallCard
+                              key={room._id}
+                              img={room.Images[0].url}
+                              location={room.address}
+                              title={room.name}
+                              ratings={room.ratings}
+                            />
+                          </div>
+                        </Link>
                       )
                   )}
                 </div>
               </section>
-              <section>
-                <h2 className="text-4xl font-semibold py-8">Live anywhere</h2>
-                <div className="flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3">
-                  {/* {cardData.map(({ img, title }) => ( */}
-                  {rooms && rooms.length === 0 ? (
-                    <p>No rooms were found!</p>
-                  ) : (
-                    rooms.map((room) => <Cards key={room._id} room={room} />)
-                  )}
-                  {/*))} */}
-                </div>
-              </section>
-
-              {/*))} */}
-              {resPerPage < count && (
-                <div className="d-flex justify-content-center mt-5">
-                  <Pagination
-                    className=""
-                    activePage={page}
-                    itemsCountPerPage={resPerPage}
-                    totalItemsCount={roomsCount}
-                    onChange={handlePagination}
-                    nextPageText={"Next"}
-                    prevPageText={"Prev"}
-                    firstPageText={"First"}
-                    lastPageText={"Last"}
-                    itemClass="page-item"
-                    linkClass="page-link"
-                  />
-                </div>
-              )}
+              <h2 className="mb-8 text-4xl font-semibold pb-5">
+                Live Anywhere
+              </h2>
+              <Section />
               <LCard
-                img="https://i.ibb.co/3FJk0L4/arc2.jpg"
+                img="https://res.cloudinary.com/drckds98u/image/upload/v1648631820/cc/lcards_pzm6am.jpg"
                 title="  Be A Part of Our Community, Get Notified by our Offers !"
                 description="Best Weekly offers Reminder just for YOU"
                 buttonText="Get Inspired"

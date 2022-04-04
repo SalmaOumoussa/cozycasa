@@ -4,8 +4,8 @@ function SmallCard({ img, location, title, ratings }) {
   return (
     <div className="flex items-center m-2 mt-5 space-x-4 rounded-xl cursor-pointer hover:bg-gray-100 hover:scale-105 transition transform duration-200 ease-out">
       {/* left */}
-      <div className="relative h-16 w-16">
-        <Image src={img} layout="fill" className="rounded-lg" />
+      <div className="relative h-20 w-20">
+        <Image src={img} height="500" width="300" className="rounded-lg" />
       </div>
       {/* right */}
       <div>
@@ -70,7 +70,6 @@ function SmallCard({ img, location, title, ratings }) {
             <span className="text-gray-600 ml-3">{ratings}</span>
           </span>
         </div>
-        <h3 className="text-gray-500">{title}</h3>
       </div>
     </div>
   );

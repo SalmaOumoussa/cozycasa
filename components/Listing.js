@@ -82,11 +82,7 @@ const Listing = ({ room }) => {
 
         <div class=" m-4 h-15 w-full max-w-sm rounded overflow-hidden shadow-lg px-4 py-3">
           <div class="bg-white rounded-lg overflow-hidden mb-10">
-            <img
-              src="https://cdn.tailgrids.com/1.0/assets/images/cards/card-01/image-01.jpg"
-              alt="image"
-              class="w-full"
-            />
+            <img src={room.Images[1].url} alt="image" class="w-full" />
             <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
               <h3>
                 <a

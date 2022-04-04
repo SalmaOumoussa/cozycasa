@@ -44,48 +44,7 @@ const BookingDetails = () => {
       <div className="md:flex items-start justify-center py-12 2xl:px-20 md:px-6 px-4 bg-purple-50">
         {booking && booking.room && booking.user && (
           <>
-            <div className="xl:w-2/6 lg:w-2/5 w-80 md:block hidden">
-              <img
-                className="w-full"
-                alt="image of a girl posing"
-                src="/images/logo.png"
-              />
-              <img
-                className="mt-6 w-full"
-                alt="image of a girl posing"
-                src="/images/logo.png"
-              />
-            </div>
-            <div className="md:hidden">
-              <img
-                className="w-full"
-                alt="image of a girl posing"
-                src="/images/logo.png"
-              />
-              <div className="flex items-center justify-between mt-3 space-x-4 md:space-x-0">
-                <img
-                  alt={booking.room.name}
-                  className="md:w-48 md:h-48 w-full"
-                  src="/images/logo.png"
-                />
-                <img
-                  alt={booking.room.name}
-                  className="md:w-48 md:h-48 w-full"
-                  src="/images/logo.png"
-                />
-                <img
-                  alt={booking.room.name}
-                  className="md:w-48 md:h-48 w-full"
-                  src="/images/logo.png"
-                />
-                <img
-                  alt={booking.room.name}
-                  className="md:w-48 md:h-48 w-full"
-                  src="/images/logo.png"
-                />
-              </div>
-            </div>
-            <div className="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
+            <div className="xl:w-2/5 m-5  md:w-1/2 lg:ml-8 p-10 shadow-2xl  border-2  md:ml-6 md:mt-0 mt-6">
               <div className="border-b border-gray-200 m-3">
                 <p className="text-sm font-semibold leading-none text-black">
                   Booking ID #{" "}

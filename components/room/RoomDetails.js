@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import RoomReview from "../../components/room/RoomReview";
+import {} from "@ant-design/icons";
 import { toast, ToastContainer } from "react-toastify";
 import { clearErrors } from "../../redux/actions/roomActions";
 import { useSelector, useDispatch } from "react-redux";
@@ -17,6 +17,7 @@ import {
 } from "../../redux/actions/bookingActions";
 import ListReviews from "../review/ListReviews";
 import DaisyModal from "../review/DaisyModal";
+import RoomCarousel from "./RoomCarousel";
 function RoomDetails() {
   const router = useRouter();
   const [checkInDate, setCheckInDate] = useState();
@@ -136,13 +137,9 @@ function RoomDetails() {
       </Head>
       <div>
         <section className="text-gray-700 body-font overflow-hidden bg-white">
-          <div className="container px-2 py-24 mx-auto">
-            <div className="lg:w-4/5 mx-auto flex flex-wrap">
-              <img
-                alt="ecommerce"
-                className="lg:w-1/2 w-full object-cover object-center rounded border hover:scale-110 transition duration-300 ease-in-out border-gray-200"
-                src="https://www.whitmorerarebooks.com/pictures/medium/2465.jpg"
-              />
+          <div className="container py-5 mx-auto">
+            <div className="lg:w-4/5 mx-auto flex flex-col">
+              {/* CAROUSEL */}
               <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                 <h2 className="text-sm title-font text-gray-500 tracking-widest">
                   {room.category}
@@ -210,64 +207,68 @@ function RoomDetails() {
                     <span className="text-gray-600 ml-3">{room.ratings}</span>
                   </span>
                 </div>
-                <p className="text-base font-light leading-relaxed mt-0 mb-4 text-gray-900">
-                  {room.description}
-                </p>
-                <div className=" mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
-                  <h1 className="text-gray-900 te text-xl font-medium">
-                    {" "}
-                    Address :{" "}
-                  </h1>
-                  <p className="text-base font-light leading-relaxed mt-0 mb-4 text-gray-900">
-                    {room.address}
-                  </p>
-                </div>
-                <div className=" mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
-                  <h1 className="text-gray-900 text-xl font-medium">
-                    {" "}
-                    Features
-                  </h1>
-                  <ol>
-                    <li className="flex text-gray-900 p-2">
-                      <span className="font-semibold pr-1 text-purple-900">
-                        {room.guestCapacity}
-                      </span>{" "}
-                      Guests
-                    </li>
-                    <li className="flex text-gray-900 pl-2 pb-2">
-                      <span className="font-semibold pr-1 text-purple-900">
-                        {room.numOfBeds}
-                      </span>{" "}
-                      Beds
-                    </li>
-                    <li className="flex text-gray-900">
-                      {check(room.breakfast)}
-                      Breakfast
-                    </li>
-                    <li className="flex text-gray-900">
-                      {check(room.internet)}
-                      Internet
-                    </li>
-                    <li className="flex text-gray-900">
-                      {check(room.airConditioned)}
-                      Air Conditioned
-                    </li>
-                    <li className="flex text-gray-900">
-                      {check(room.petsAllowed)}
-                      Pets Allowed
-                    </li>
-                    <li className="flex text-gray-900">
-                      {check(room.roomCleaning)}
-                      Room Cleaning
-                    </li>
-                  </ol>
-                </div>
-                <div className="flex">
-                  <span className="title-font font-medium text-2xl text-gray-900">
-                    {room.pricePerNight}
-                  </span>
-                </div>
+                {/*  */}
               </div>
+              <RoomCarousel room={room} />
+
+              <p className="text-base font-light leading-relaxed mt-0 mb-4 text-gray-900">
+                {room.description}
+              </p>
+              <div className=" mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
+                <h1 className="text-gray-900 te text-xl font-medium">
+                  {" "}
+                  Address :{" "}
+                </h1>
+                <p className="text-base font-light leading-relaxed mt-0 mb-4 text-gray-900">
+                  {room.address}
+                </p>
+              </div>
+              <div className=" mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
+                <h1 className="text-gray-900 text-xl font-medium"> Features</h1>
+                <ol>
+                  <li className="flex text-gray-900 p-2">
+                    <span className="font-semibold pr-1 text-purple-900">
+                      {room.guestCapacity}
+                    </span>{" "}
+                    Guests
+                  </li>
+                  <li className="flex text-gray-900 pl-2 pb-2">
+                    <span className="font-semibold pr-1 text-purple-900">
+                      {room.numOfBeds}
+                    </span>{" "}
+                    Beds
+                  </li>
+                  <li className="flex text-gray-900">
+                    {check(room.breakfast)}
+                    Breakfast
+                  </li>
+                  <li className="flex text-gray-900">
+                    {check(room.internet)}
+                    Internet
+                  </li>
+                  <li className="flex text-gray-900">
+                    {check(room.airConditioned)}
+                    Air Conditioned
+                  </li>
+                  <li className="flex text-gray-900">
+                    {check(room.petsAllowed)}
+                    Pets Allowed
+                  </li>
+                  <li className="flex text-gray-900">
+                    {check(room.roomCleaning)}
+                    Room Cleaning
+                  </li>
+                </ol>
+              </div>
+              <div className="flex">
+                <span className="title-font font-bold text-base text-gray-900">
+                  CHARGING{" "}
+                  <span className="text-purple-900 underline">
+                    ${room.pricePerNight}
+                  </span>
+                </span>
+              </div>
+              <br />
               <hr />
               <div className="m-auto mt-10 bg-gray-300 rounded-lg">
                 <p className="font-semibold text-purple-900 text-lg">
@@ -321,8 +322,6 @@ function RoomDetails() {
                   No Reviews were found
                 </p>
               )}
-
-              {/* <NewReview /> */}
             </div>
           </div>
         </section>
