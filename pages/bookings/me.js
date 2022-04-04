@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { getSession } from "next-auth/react";
+import { EyeIcon, DownloadIcon } from "@heroicons/react/solid";
 
 import Booking from "../../components/booking/Booking";
 import Header from "../../components/Header";
@@ -22,7 +23,6 @@ const MyBookingsPage = () => {
       dispatch(clearErrors());
     }
   }, [dispatch]);
-  //   console.log(bookings);
   return (
     <>
       <Header />

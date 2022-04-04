@@ -152,14 +152,16 @@ function Booking() {
     });
   return (
     <div className="mx-12">
-      <Table
-        columns={data.columns}
-        rows={data.rows}
-        per_page={5}
-        table_header="My Bookings"
-        should_export={false}
-        className="mx-9 bg-red-900"
-      />
+      <div>
+        <Table
+          columns={data.columns}
+          rows={data.rows}
+          per_page={5}
+          table_header="My Bookings"
+          should_export={false}
+          className="mx-9 bg-red-900"
+        />
+      </div>
     </div>
   );
 }
