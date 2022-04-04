@@ -60,7 +60,7 @@ export default function Home(/*{ exploreData, cardData }*/) {
         {location ? (
           <>
             <Header />
-            <section class="flex-grow pt-14 px-6">
+            <section className="flex-grow pt-14 px-6">
               <h2 className="text-l font-semibold p-1">
                 Stays in{" "}
                 <span className="text-purple-900 text-l">
@@ -84,8 +84,8 @@ export default function Home(/*{ exploreData, cardData }*/) {
                   More filters{" "}
                 </p>
               </div>
-              <div class="container">
-                <div class="flex flex-wrap -mx-4">
+              <div className="container">
+                <div className="flex flex-wrap -mx-4">
                   {rooms && rooms.length === 0 ? (
                     <p className="font-bold m-10 p-2 text-black border-4 border-black bg-purple-300">
                       No rooms were found !
@@ -147,8 +147,8 @@ export default function Home(/*{ exploreData, cardData }*/) {
                     prevPageText={"Prev"}
                     firstPageText={"First"}
                     lastPageText={"Last"}
-                    itemClass="page-item"
-                    linkClass="page-link"
+                    itemclassName="page-item"
+                    linkclassName="page-link"
                   />
                 </div>
               )}

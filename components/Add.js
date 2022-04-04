@@ -94,49 +94,49 @@ const Add = () => {
         rel="stylesheet"
         href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
       />
-      <section class="py-1 bg-blueGray-50">
-        <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
-          <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
-            <div class="rounded-t bg-white mb-0 px-6 py-6">
-              <div class="text-center flex justify-between">
-                <h6 class="text-blueGray-700 text-xl font-bold">
+      <section className="py-1 bg-blueGray-50">
+        <div className="w-full lg:w-8/12 px-4 mx-auto mt-6">
+          <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+            <div className="rounded-t bg-white mb-0 px-6 py-6">
+              <div className="text-center flex justify-between">
+                <h6 className="text-blueGray-700 text-xl font-bold">
                   Add A Listing
                 </h6>
               </div>
             </div>
-            <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+            <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
               <form onSubmit={submitHandler}>
-                <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
                   Listing Information
                 </h6>
-                <div class="flex flex-wrap">
-                  <div class="w-full lg:w-6/12 px-4">
-                    <div class="relative w-full mb-3">
+                <div className="flex flex-wrap">
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
                       <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
                         title
                       </label>{" "}
                       <input
                         type="text"
-                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                       />
                     </div>
                   </div>
-                  <div class="w-full lg:w-6/12 px-4">
-                    <div class="relative w-full mb-3">
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
                       <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
                         Price Per Night
                       </label>{" "}
                       <input
                         type="text"
-                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         value={pricePerNight}
                         onChange={(e) => setPricePerNight(e.target.value)}
                       />
@@ -144,52 +144,52 @@ const Add = () => {
                   </div>
                 </div>
 
-                <div class="flex flex-wrap">
-                  <div class="w-full lg:w-6/12 px-4">
-                    <div class="relative w-full mb-3">
+                <div className="flex flex-wrap">
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
                       <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
                         guest Capacity
                       </label>{" "}
                       <input
                         type="number"
-                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         values={guestCapacity}
                         onChange={(e) => setNoOfGuests(e.target.value)}
                       />
                     </div>
                   </div>
-                  <div class="w-full lg:w-6/12 px-4">
-                    <div class="relative w-full mb-3">
+                  <div className="w-full lg:w-6/12 px-4">
+                    <div className="relative w-full mb-3">
                       <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
                         no of Beds
                       </label>
                       <input
                         type="nnumber"
-                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         value={numOfBeds}
                         onChange={(e) => setNumOfBeds(e.target.value)}
                       />
                     </div>
                   </div>
                 </div>
-                <div class="flex flex-wrap">
-                  <div class="w-full lg:w-12/12 px-4">
-                    <div class="relative w-full mb-3">
+                <div className="flex flex-wrap">
+                  <div className="w-full lg:w-12/12 px-4">
+                    <div className="relative w-full mb-3">
                       <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                        className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                         htmlfor="grid-password"
                       >
                         Address
                       </label>{" "}
                       <input
                         type="text"
-                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
                       />
@@ -197,39 +197,41 @@ const Add = () => {
                   </div>
                 </div>
                 <div>
-                  <div class="">
-                    <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                  <div className="">
+                    <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
                       Listing Features
                     </h6>
                   </div>
-                  <div class="flex my-4">
-                    <h1 class="font-semibold text-sm text-black">Breakfast</h1>
-                    <div class="flex justify-center mx-12">
-                      <div class="form-check form-check-inline justify-center">
+                  <div className="flex my-4">
+                    <h1 className="font-semibold text-sm text-black">
+                      Breakfast
+                    </h1>
+                    <div className="flex justify-center mx-12">
+                      <div className="form-check form-check-inline justify-center">
                         <input
-                          class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                          className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio1"
                           value="option1"
                         />
                         <label
-                          class="form-check-label inline-block text-gray-800"
+                          className="form-check-label inline-block text-gray-800"
                           for="inlineRadio10"
                         >
                           Yes{" "}
                         </label>
                       </div>
-                      <div class="form-check form-check-inline mx-44">
+                      <div className="form-check form-check-inline mx-44">
                         <input
-                          class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                          className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio2"
                           value="option2"
                         />
                         <label
-                          class="form-check-label inline-block text-gray-800"
+                          className="form-check-label inline-block text-gray-800"
                           for="inlineRadio20"
                         >
                           {" "}
@@ -238,34 +240,36 @@ const Add = () => {
                       </div>
                     </div>
                   </div>
-                  <div class="flex my-4">
-                    <h1 class="font-semibold text-sm text-black">Internet</h1>
-                    <div class="flex justify-center mx-12">
-                      <div class="form-check form-check-inline justify-center">
+                  <div className="flex my-4">
+                    <h1 className="font-semibold text-sm text-black">
+                      Internet
+                    </h1>
+                    <div className="flex justify-center mx-12">
+                      <div className="form-check form-check-inline justify-center">
                         <input
-                          class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                          className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio1"
                           value="option1"
                         />
                         <label
-                          class="form-check-label inline-block text-gray-800"
+                          className="form-check-label inline-block text-gray-800"
                           for="inlineRadio10"
                         >
                           Yes{" "}
                         </label>
                       </div>
-                      <div class="form-check form-check-inline mx-44">
+                      <div className="form-check form-check-inline mx-44">
                         <input
-                          class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                          className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio2"
                           value="option2"
                         />
                         <label
-                          class="form-check-label inline-block text-gray-800"
+                          className="form-check-label inline-block text-gray-800"
                           for="inlineRadio20"
                         >
                           {" "}
@@ -274,36 +278,36 @@ const Add = () => {
                       </div>
                     </div>
                   </div>
-                  <div class="flex my-4">
-                    <h1 class="font-semibold text-sm text-black">
+                  <div className="flex my-4">
+                    <h1 className="font-semibold text-sm text-black">
                       Air Conditioned
                     </h1>
-                    <div class="flex justify-center mx-12">
-                      <div class="form-check form-check-inline justify-center">
+                    <div className="flex justify-center mx-12">
+                      <div className="form-check form-check-inline justify-center">
                         <input
-                          class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                          className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio1"
                           value="option1"
                         />
                         <label
-                          class="form-check-label inline-block text-gray-800"
+                          className="form-check-label inline-block text-gray-800"
                           for="inlineRadio10"
                         >
                           Yes{" "}
                         </label>
                       </div>
-                      <div class="form-check form-check-inline mx-44">
+                      <div className="form-check form-check-inline mx-44">
                         <input
-                          class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                          className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio2"
                           value="option2"
                         />
                         <label
-                          class="form-check-label inline-block text-gray-800"
+                          className="form-check-label inline-block text-gray-800"
                           for="inlineRadio20"
                         >
                           {" "}
@@ -312,36 +316,36 @@ const Add = () => {
                       </div>
                     </div>
                   </div>
-                  <div class="flex my-4">
-                    <h1 class="font-semibold text-sm text-black">
+                  <div className="flex my-4">
+                    <h1 className="font-semibold text-sm text-black">
                       Pets Allowed
                     </h1>
-                    <div class="flex justify-center mx-12">
-                      <div class="form-check form-check-inline justify-center">
+                    <div className="flex justify-center mx-12">
+                      <div className="form-check form-check-inline justify-center">
                         <input
-                          class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                          className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio1"
                           value="option1"
                         />
                         <label
-                          class="form-check-label inline-block text-gray-800"
+                          className="form-check-label inline-block text-gray-800"
                           for="inlineRadio10"
                         >
                           Yes{" "}
                         </label>
                       </div>
-                      <div class="form-check form-check-inline mx-44">
+                      <div className="form-check form-check-inline mx-44">
                         <input
-                          class="form-check-input fo^rm-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                          className="form-check-input fo^rm-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio2"
                           value="option2"
                         />
                         <label
-                          class="form-check-label inline-block text-gray-800"
+                          className="form-check-label inline-block text-gray-800"
                           for="inlineRadio20"
                         >
                           {" "}
@@ -350,36 +354,36 @@ const Add = () => {
                       </div>
                     </div>
                   </div>
-                  <div class="flex my-4">
-                    <h1 class="font-semibold text-sm text-black">
+                  <div className="flex my-4">
+                    <h1 className="font-semibold text-sm text-black">
                       Room Cleaning
                     </h1>
-                    <div class="flex justify-center mx-12">
-                      <div class="form-check form-check-inline justify-center">
+                    <div className="flex justify-center mx-12">
+                      <div className="form-check form-check-inline justify-center">
                         <input
-                          class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                          className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio1"
                           value="option1"
                         />
                         <label
-                          class="form-check-label inline-block text-gray-800"
+                          className="form-check-label inline-block text-gray-800"
                           for="inlineRadio10"
                         >
                           Yes{" "}
                         </label>
                       </div>
-                      <div class="form-check form-check-inline mx-44">
+                      <div className="form-check form-check-inline mx-44">
                         <input
-                          class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                          className="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-purple-600 checked:border-purple-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio2"
                           value="option2"
                         />
                         <label
-                          class="form-check-label inline-block text-gray-800"
+                          className="form-check-label inline-block text-gray-800"
                           for="inlineRadio20"
                         >
                           {" "}
@@ -389,15 +393,15 @@ const Add = () => {
                     </div>
                   </div>
                 </div>
-                <div class="flex flex-wrap">
-                  <div class="w-full lg:w-12/12 px-4">
-                    <div class="relative w-full mb-3">
-                      <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                <div className="flex flex-wrap">
+                  <div className="w-full lg:w-12/12 px-4">
+                    <div className="relative w-full mb-3">
+                      <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
                         description
                       </h6>
                       <textarea
                         type="text"
-                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                        className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                         rows="4"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
@@ -406,7 +410,7 @@ const Add = () => {
                   </div>
                 </div>
 
-                <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+                <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
                   Upload Pictures of your Listing
                 </h6>
                 <div className="d-flex align-items-center">

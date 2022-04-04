@@ -45,7 +45,7 @@ const allListings = () => {
         {rooms && rooms.length === 0 ? (
           <p>No rooms were found!</p>
         ) : (
-          <div class=" w-full grid grid-cols-3 ">
+          <div className=" w-full grid grid-cols-3 ">
             {rooms.map((room) => (
               <Listing key={room._id} room={room} />
             ))}
@@ -63,8 +63,8 @@ const allListings = () => {
               prevPageText={"Prev"}
               firstPageText={"First"}
               lastPageText={"Last"}
-              itemClass="page-item"
-              linkClass="page-link"
+              itemclassName="page-item"
+              linkclassName="page-link"
             />
           </div>
         )}

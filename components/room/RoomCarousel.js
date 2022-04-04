@@ -6,7 +6,7 @@ const RoomCarousel = ({ room }) => {
       <div className="carousel w-full h-96 mt-0">
         <div id="slide1" className="carousel-item relative w-full">
           <img
-            src={room.Images[0].url}
+            src={room.images[0].url}
             className="w-full object-cover object-center rounded"
           />{" "}
           /
@@ -21,7 +21,7 @@ const RoomCarousel = ({ room }) => {
         </div>
         <div id="slide2" className="carousel-item relative w-full">
           <img
-            src={room.Images[1].url}
+            src={room.images[1].url}
             className="w-full object-cover object-center rounded"
           />{" "}
           /
@@ -36,7 +36,7 @@ const RoomCarousel = ({ room }) => {
         </div>
         <div id="slide3" className="carousel-item relative w-full">
           <img
-            src={room.Images[2].url}
+            src={room.images[2].url}
             className="w-full object-cover object-center rounded"
           />{" "}
           /
@@ -51,7 +51,7 @@ const RoomCarousel = ({ room }) => {
         </div>
         <div id="slide4" className="carousel-item relative w-full">
           <img
-            src={room.Images[3].url}
+            src={room.images[3].url}
             className="w-full object-cover object-center rounded"
           />{" "}
           /

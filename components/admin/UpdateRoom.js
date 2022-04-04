@@ -134,7 +134,7 @@ const UpdateRoom = () => {
               <form
                 className="shadow-lg"
                 onSubmit={submitHandler}
-                enctype="multipart/form-data"
+                encType="multipart/form-data"
               >
                 <h1 className="mb-4">Update Room</h1>
                 <div className="form-group">

@@ -32,6 +32,8 @@ const allRooms = AsyncCatchErrors(async (req, res) => {
 // Create new room   =>   /api/rooms
 const newRoom = AsyncCatchErrors(async (req, res) => {
   const images = req.body.images;
+  console.log("HADI REQ.BODY => ", req.body);
+  console.log("HADI REQ.BODY.IMAGES => ", req.body.images);
 
   let imagesLinks = [];
   for (let i = 0; i < images.length; i++) {

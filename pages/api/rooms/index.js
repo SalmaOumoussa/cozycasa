@@ -10,4 +10,12 @@ dbConnect();
 handler.get(allRooms);
 handler.use(isAuthenticated, authorizeRoles("Admin")).post(newRoom);
 
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: "4mb",
+    },
+  },
+};
+
 export default handler;
