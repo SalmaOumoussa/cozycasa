@@ -38,7 +38,7 @@ const Login = () => {
     <>
       <div className="flex flex-col items-center justify-center bg-gray-300 h-screen">
         <div className="flex flex-col m-5 bg-white px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-xl shadow-2xl w-full max-w-md  border-l-4 border-purple-600">
-          {/* <div class="font-medium self-center text-xl sm:text-2xl uppercase w-60 text-center bg-purple-600 shadow-2xl p-6 rounded-full text-white">
+          {/* <div className="font-medium self-center text-xl sm:text-2xl uppercase w-60 text-center bg-purple-600 shadow-2xl p-6 rounded-full text-white">
                 Sign In
               </div> */}
           <div className="relative  justify-center flex items-center h-11 cursor-pointer ">
@@ -89,13 +89,13 @@ const Login = () => {
           <div className="flex flex-wrap mt-6">
             <div className="w-1/2 text-left">
               <Link href="/password/forgot">
-                <a class="text-blue-900 text-xl">
+                <a className="text-blue-900 text-xl">
                   <small>Forgot password?</small>
                 </a>
               </Link>
             </div>
             <div className="w-1/2 text-right">
-              <a href="#" class="text-blue-900 text-xl">
+              <a href="#" className="text-blue-900 text-xl">
                 <Link href="/register">
                   <a> Register</a>
                 </Link>

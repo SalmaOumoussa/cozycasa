@@ -58,7 +58,7 @@ const roomSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  Images: [
+  images: [
     {
       public_id: {
         type: String,

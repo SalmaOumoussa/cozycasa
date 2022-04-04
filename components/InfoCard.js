@@ -44,7 +44,7 @@ function InfoCard({ room }) {
             <p className="text-right font-extralight">total</p>
           </div>
           <div>
-            <Link href={`/rooms/${room._id}`}>
+            <Link href={`/room/${room._id}`}>
               <button className="text-purple-500 bg-white px-10 py-4 shadow-md rounded-full font-bold my-3 hover:shadow-xl active:scale-90 transition duration-150">
                 View Details
               </button>

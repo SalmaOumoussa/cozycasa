@@ -20,23 +20,6 @@ export default function RoomDetailsPage() {
   );
 }
 
-// export async function getStaticProps() {
-//   const exploreData = await fetch("https://links.papareact.com/pyp").then(
-//     (res) => res.json()
-//   );
-
-//   const cardData = await fetch("https://links.papareact.com/zp1").then((res) =>
-//     res.json()
-//   );
-
-//   return {
-//     props: {
-//       exploreData,
-//       cardData,
-//     },
-//   };
-// }
-
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>
     async ({ req, params }) => {

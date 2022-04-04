@@ -23,6 +23,7 @@ function Header({ placeholder }) {
   };
   const dispatch = useDispatch();
   const { user, loading } = useSelector((state) => state.loadedUser);
+  // console.log(user.role[0]);
   useEffect(() => {
     dispatch(loadUser());
   }, [dispatch]);
@@ -49,14 +50,24 @@ function Header({ placeholder }) {
               tabIndex="-1"
             >
               <div className="py-1" role="none">
-                <Link href="/profile">
+                {user.role === "Admin" && (
+                  <>
+                    <Link href="/admin/rooms">
+                      <a className="text-red-700 block px-4 py-2 text-sm hover:bg-gray-200 font-semibold">
+                        Rooms
+                      </a>
+                    </Link>
+                    <hr />
+                  </>
+                )}
+                <Link href="/profile/me">
                   <a
                     className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200 font-semibold"
                     role="menuitem"
                     tabIndex="-1"
                     id="menu-item-0"
                   >
-                    {user && user.name}
+                    {user && user.firstName + " " + user.lastName}
                   </a>
                 </Link>
                 <Link href="/bookings/me">

@@ -59,7 +59,7 @@ export default function Home(/*{ exploreData, cardData }*/) {
         {location ? (
           <>
             <Header />
-            <section class="flex-grow pt-14 px-6">
+            <section className="flex-grow pt-14 px-6">
               <h2 className="text-l font-semibold p-1">
                 Stays in{" "}
                 <span className="text-purple-900 text-l">
@@ -83,8 +83,8 @@ export default function Home(/*{ exploreData, cardData }*/) {
                   More filters{" "}
                 </p>
               </div>
-              <div class="container">
-                <div class="flex flex-wrap -mx-4">
+              <div className="container">
+                <div className="flex flex-wrap -mx-4">
                   {rooms && rooms.length === 0 ? (
                     <p className="font-bold m-10 p-2 text-black border-4 border-black bg-purple-300">
                       No rooms were found !
@@ -124,10 +124,44 @@ export default function Home(/*{ exploreData, cardData }*/) {
                   )}
                 </div>
               </section>
+<<<<<<< HEAD
               <h2 className="mb-8 text-4xl font-semibold pb-5">
                 Live Anywhere
               </h2>
               <Section />
+=======
+              <section>
+                <h2 className="text-4xl font-semibold py-8">Live anywhere</h2>
+                <div className="flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3">
+                  {/* {cardData.map(({ img, title }) => ( */}
+                  {rooms && rooms.length === 0 ? (
+                    <p>No rooms were found!</p>
+                  ) : (
+                    rooms.map((room) => <Cards key={room._id} room={room} />)
+                  )}
+                  {/*))} */}
+                </div>
+              </section>
+
+              {/*))} */}
+              {resPerPage < count && (
+                <div className="d-flex justify-content-center mt-5">
+                  <Pagination
+                    className=""
+                    activePage={page}
+                    itemsCountPerPage={resPerPage}
+                    totalItemsCount={roomsCount}
+                    onChange={handlePagination}
+                    nextPageText={"Next"}
+                    prevPageText={"Prev"}
+                    firstPageText={"First"}
+                    lastPageText={"Last"}
+                    itemclassName="page-item"
+                    linkclassName="page-link"
+                  />
+                </div>
+              )}
+>>>>>>> 38e12906cc2ae948b254bc0ee3a825aad8bc990a
               <LCard
                 img="https://res.cloudinary.com/drckds98u/image/upload/v1648631820/cc/lcards_pzm6am.jpg"
                 title="  Be A Part of Our Community, Get Notified by our Offers !"

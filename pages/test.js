@@ -1,4 +1,6 @@
-import Comp from "../components/Comp";
+import NewRoomForm from "../components/NewRoomForm";
+import React from "react";
+
 export default function test() {
-  return <Comp />;
+  return <NewRoomForm />;
 }
